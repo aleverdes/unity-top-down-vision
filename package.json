@@ -1,0 +1,20 @@
+{
+  "name": "gg.groza.top-down-vision",
+  "author": "Groza Games",
+  "displayName": "Groza Games Top-Down Vision",
+  "description": "Groza Games Top-Down Vision is a raycast-based solution for visualization line of sight for player vision in top-down games.",
+  "unity": "2018.4",
+  "version": "1.0.0",
+  "keywords": [
+    "Vision",
+    "Line of sight",
+    "Shader"
+  ],
+  "dependencies": {
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/groza-games/packages/top-down-vision.git"
+  }
+}
