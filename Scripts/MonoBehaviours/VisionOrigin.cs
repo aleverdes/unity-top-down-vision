@@ -1,4 +1,3 @@
-﻿using GrozaGames.Kit;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
@@ -195,7 +194,7 @@ namespace GrozaGames.TopDownVision.MonoBehaviours
                     ? hit0.point
                     : transform.position + Vector3.up * _originHeightOffset + _coneCommands[currentHitIndex].direction * _coneMaxDistance;
                 segment.PointA0 = pointA0 - transform.position - _raycastHitEpsilonPadding * _coneCommands[currentHitIndex].direction;
-                segment.PointA0Color = GetColor(edgeFactor0 * (1f - Vector3.Distance(transform.position, pointA0.WithY(transform.position.y)) / _coneMaxDistance));
+                segment.PointA0Color = GetColor(edgeFactor0 * (1f - Vector3.Distance(transform.position, WithY(pointA0,transform.position.y)) / _coneMaxDistance));
                 segment.PointA0Index = totalVertices;
                 totalVertices++;
                 
@@ -206,7 +205,7 @@ namespace GrozaGames.TopDownVision.MonoBehaviours
                     ? hit1.point
                     : transform.position + Vector3.up * _originHeightOffset + _coneCommands[nextHitIndex].direction * _coneMaxDistance;
                 segment.PointB0 = pointB0 - transform.position - _raycastHitEpsilonPadding * _coneCommands[nextHitIndex].direction;
-                segment.PointB0Color = GetColor(edgeFactor1 * (1f - Vector3.Distance(transform.position, pointB0.WithY(transform.position.y)) / _coneMaxDistance));
+                segment.PointB0Color = GetColor(edgeFactor1 * (1f - Vector3.Distance(transform.position, WithY(pointB0,transform.position.y)) / _coneMaxDistance));
                 segment.PointB0Index = totalVertices;
                 totalVertices++;
 
@@ -351,7 +350,7 @@ namespace GrozaGames.TopDownVision.MonoBehaviours
                     ? hit0.point
                     : transform.position + Vector3.up * _originHeightOffset + _circleCommands[currentHitIndex].direction * _circleMaxDistance;
                 segment.PointA0 = pointA0 - transform.position - _raycastHitEpsilonPadding * _circleCommands[currentHitIndex].direction;
-                segment.PointA0Color = GetColor(1f - Vector3.Distance(transform.position, pointA0.WithY(transform.position.y)) / _circleMaxDistance);
+                segment.PointA0Color = GetColor(1f - Vector3.Distance(transform.position, WithY(pointA0,transform.position.y)) / _circleMaxDistance);
                 segment.PointA0Index = totalVertices;
                 totalVertices++;
                 
@@ -362,7 +361,7 @@ namespace GrozaGames.TopDownVision.MonoBehaviours
                     ? hit1.point
                     : transform.position + Vector3.up * _originHeightOffset + _circleCommands[nextHitIndex].direction * _circleMaxDistance;
                 segment.PointB0 = pointB0 - transform.position - _raycastHitEpsilonPadding * _circleCommands[nextHitIndex].direction;
-                segment.PointB0Color = GetColor(1f - Vector3.Distance(transform.position, pointB0.WithY(transform.position.y)) / _circleMaxDistance);
+                segment.PointB0Color = GetColor(1f - Vector3.Distance(transform.position, WithY(pointB0,transform.position.y)) / _circleMaxDistance);
                 segment.PointB0Index = totalVertices;
                 totalVertices++;
 
@@ -460,6 +459,11 @@ namespace GrozaGames.TopDownVision.MonoBehaviours
             
             _circleMeshFilter.sharedMesh = _circleMesh;
             _circleGameObject.transform.position = transform.position;
+        }
+
+        private Vector3 WithY(Vector3 point, float y)
+        {
+            return new Vector3(point.x, y, point.y);
         }
 
         private void RecreateConeData()
