@@ -463,7 +463,7 @@ namespace GrozaGames.TopDownVision.MonoBehaviours
 
         private Vector3 WithY(Vector3 point, float y)
         {
-            return new Vector3(point.x, y, point.y);
+            return new Vector3(point.x, y, point.z);
         }
 
         private void RecreateConeData()
